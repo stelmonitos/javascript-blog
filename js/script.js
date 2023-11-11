@@ -126,24 +126,26 @@
       activeTagLink.classList.remove('active');
       /* END LOOP: for each active tag link */
     }
-    /*[PROGRESS]find all tag links with "href" attribute equal to the "href" constant */
-
+    /*[]find all tag links with "href" attribute equal to the "href" constant */
+    const tagLinks = document.querySelectorAll('a[href="' + href + '"]')
     /* START LOOP: for each found tag link */
-
+    for(let tagLink of tagLinks){
       /* add class active */
-
+      tagLink.classList.add('active');
       /* END LOOP: for each found tag link */
-
+    }
     /* execute function "generateTitleLinks" with article selector as argument */
+    generateTitleLinks(optArticleSelector);
   }
   function addClickListenersToTags() {
     /* find all links to tags */
-
+    const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
     /* START LOOP: for each link */
-
+    for (let tagLink of tagLinks) {
     /* add tagClickHandler as event listener for that link */
-
+    tagLink.addEventListener('click', tagClickHandler);
     /* END LOOP: for each link */
+    }
   }
   generateTags();
   addClickListenersToTags();
