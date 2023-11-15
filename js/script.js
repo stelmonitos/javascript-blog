@@ -135,6 +135,7 @@
     }
     /* execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-tags~="' + tag + '"]');
+    console.log('generatetitlelinks-tag;', generateTitleLinks);
   }
   function addClickListenersToTags() {
     /* find all links to tags */
@@ -201,12 +202,12 @@
     /* END LOOP: for each found author link */
     }
     /* execute function "generateTitleLinks" with article selector as argument */
-    generateTitleLinks('[data-authors="' + author + '"]');
+    generateTitleLinks('[data-author="' + author + '"]');
     console.log('generatetitlelinks;', generateTitleLinks);
   }
   function addClickListenersToAuthors(){
     /* find all links to tags */
-    const authorLinks = document.querySelectorAll('.post-author a[href^="#"]')
+    const authorLinks = document.querySelectorAll('a[href^="#"]')
     console.log('authorLinks;', authorLinks)
     /* START LOOP: for each link */
     for(let authorLink of authorLinks){
