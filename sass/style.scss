@@ -90,6 +90,7 @@ body {
 .list-horizontal {
   li {
     display: inline-block;
+    padding-inline: 3px;
   }
 }
 
@@ -124,4 +125,26 @@ body {
   p {
     margin: 0 10px 0 0;
   }
+}
+.tag-size-1 {
+  font-size: smaller;
+}
+
+.tag-size-2 {
+  font-size: small;
+}
+
+.tag-size-3 {
+  font-size: medium;
+}
+
+.tag-size-4 {
+  font-size: large;
+}
+
+.tag-size-5 {
+  font-size: larger;
+}
+aside .tags {
+background-color: red;
 }
