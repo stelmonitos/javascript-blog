@@ -14,9 +14,12 @@ $font-text: 'Source Sans Pro', sans-serif;
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 a {
+
   color: #444444;
 }
+
 body {
   background: $color-light;
   font-family: $font-text;
@@ -128,6 +131,7 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
 .tag-size-1 {
   font-size: smaller;
 }
@@ -147,6 +151,7 @@ body {
 .tag-size-5 {
   font-size: larger;
 }
+
 .list.tags {
   list-style: none;
   padding: 0;
