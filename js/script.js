@@ -1,4 +1,10 @@
 'use strict';
+// i dont know if this supposed be inside the '{}' or like this because it says "Następnie na początku swojego pliku JS wstaw ten kod:" so i am assuming that its correct;
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+};
 {
   /* document.getElementById('test-button').addEventListener('click', function(){
       const links = document.querySelectorAll('.titles a');
@@ -50,7 +56,10 @@
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
       /* get the title from the title element */
       /* create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      // const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      const linkHTMLData = {id: articleId, title: articleTitle};
+      const linkHTML = templates.articleLink(linkHTMLData);
+
       /* insert link into titleList */
       html = html + linkHTML;
     }
@@ -102,7 +111,8 @@
       /* START LOOP: for each tag */
       for (let tag of articleTagsArray) {
         /* generate HTML of the link */
-        const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+        const linkHTMLData = {id: tag, title: tag};
+        const linkHTML = templates.tagLink(linkHTMLData);
         /* add generated code to html variable */
         html = html + linkHTML;
         /* [NEW] check if this link is NOT already in allTags */
@@ -172,8 +182,10 @@
       /* END LOOP: for each link */
     }
   };
+
   generateTags();
   addClickListenersToTags();
+
   const generateAuthors = function() {
     /* [NEW] create a new variable allTags with an empty array */
     let allAuthors = {};
@@ -188,7 +200,10 @@
       /* get author from data-author attribute */
       const articleAuthor = article.getAttribute('data-author');
       /* generate HTML of the link */
-      const authorHTML = '<li><a href="#author' + articleAuthor + '"><span>' + 'by ' + articleAuthor + '</span></a></li>';
+      // const authorHTML = '<li><a href="#author' + articleAuthor + '"><span>' + 'by ' + articleAuthor + '</span></a></li>';
+      const linkHTMLData = {id: articleAuthor, title: articleAuthor};
+      const authorHTML = templates.authorLink(linkHTMLData);
+
       /* add generated code to html variable */
       html = html + authorHTML;
       /* [NEW] check if this link is NOT already in allTags */
@@ -215,7 +230,7 @@
     /*[NEW] add HTML from allTagsHTML to tagList */
     authorList.innerHTML = allAuthorsHTML;
   };
-  
+
   const authorClickHandler = function(event) {
     /* prevent default action for this event */
     event.preventDefault();
